@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 30f;
 
     bool interacting;
-    IIteractable closeIteractable = null;
+    IInteractable closeInteractable = null;
     Vector2 direction;
     Rigidbody2D rb;
     Animator animator;
@@ -61,15 +61,20 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if(closeIteractable != null)
+        if(closeInteractable != null && !interacting)
         {
             interacting = true;
-            closeIteractable.Iteract();
+            closeInteractable.Interact();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        closeIteractable = collision.GetComponent<IIteractable>();
+        closeInteractable = collision.GetComponent<IInteractable>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        closeInteractable = null;
     }
 }

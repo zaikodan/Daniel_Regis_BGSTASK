@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IIteractable
+public class ItemHead : Item
 {
-    public void Iteract();
+    [SerializeField] Sprite hair, face;
 }
