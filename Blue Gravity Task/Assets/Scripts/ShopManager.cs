@@ -7,9 +7,12 @@ public class ShopManager : MonoBehaviour
 {
     NPC npc;
     Inventory inventory;
+    PlayerController playerController;
     ShopUI shopUI;
 
     int itemSelected;
+    GameObject buttonSelected;
+    internal bool buying;
 
     public NPC Npc { get => npc; set => npc = value; }
     public Inventory Inventory { get => inventory; }
@@ -17,40 +20,64 @@ public class ShopManager : MonoBehaviour
     private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
+        playerController = FindObjectOfType<PlayerController>();
         shopUI = GetComponent<ShopUI>();
     }
 
     public void SetupShop()
     {
+        buying = true;
         shopUI.GenerateButtons();
-
+        shopUI.SetPreview();
+        shopUI.SetShopWindow(buying);
     }
 
-    internal void SelectItem(int itemIndex)
+    internal void SelectItem(int itemIndex, GameObject buttonClicked)
     {
         itemSelected = itemIndex;
+        buttonSelected = buttonClicked;
+
+        if (buying)
+        {
+            shopUI.SetPreview(npc.ItemsForSale[itemSelected]);
+            shopUI.SetBuyButton(inventory.Money >= npc.ItemsForSale[itemSelected].Price);
+        }
+        else
+        {
+            shopUI.SetSellButton(true);
+        }
     }
 
     internal void BuyItem()
     {
         inventory.Money -= npc.ItemsForSale[itemSelected].Price;
         inventory.ItemsList.Add(npc.ItemsForSale[itemSelected]);
+
+        shopUI.SetBuyButton(inventory.Money >= npc.ItemsForSale[itemSelected].Price);
+
+        shopUI.GenerateButtons();
     }
 
     internal void SellItem()
     {
-        Item itemSelling = npc.ItemsForSale[itemSelected];
-
-        if (itemSelling.Equipable)
-        {
-            inventory.Money += inventory.ItemsList[itemSelected].Price / 2;
-        }
-        else
-        {
-            inventory.Money += inventory.ItemsList[itemSelected].Price;
-        }
+        inventory.Money += inventory.ItemsList[itemSelected].Price;
 
         inventory.ItemsList.Remove(inventory.ItemsList[itemSelected]);
 
+        shopUI.SetSellButton(false);
+        DestroyImmediate(buttonSelected);
+        shopUI.UpdateButtons();
+    }
+
+    public void OpenShop()
+    {
+        SetupShop();
+        
+    }
+
+    internal void CloseShop()
+    {
+        playerController.EndInteraction();
+        shopUI.SetShopWindow(false);
     }
 }

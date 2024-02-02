@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     List<Item> itemsList = new List<Item>();
-    int money;
+    int money = 100;
 
     public List<Item> ItemsList { get => itemsList; }
 

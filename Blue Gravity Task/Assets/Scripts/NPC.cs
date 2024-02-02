@@ -12,10 +12,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        
-        shop.gameObject.SetActive(true);
         shop.Npc = this;
-        shop.SetupShop();
+        shop.OpenShop();
         Debug.Log("Shop Open");
     }
 

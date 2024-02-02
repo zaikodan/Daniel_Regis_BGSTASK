@@ -63,9 +63,15 @@ public class PlayerController : MonoBehaviour
     {
         if(closeInteractable != null && !interacting)
         {
+            rb.velocity = Vector2.zero;
             interacting = true;
             closeInteractable.Interact();
         }
+    }
+
+    public void EndInteraction()
+    {
+        interacting= false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
