@@ -50,8 +50,9 @@ public class ShopManager : MonoBehaviour
 
     internal void BuyItem()
     {
-        inventory.Money -= npc.ItemsForSale[itemSelected].Price;
-        inventory.ItemsList.Add(npc.ItemsForSale[itemSelected]);
+        Item itemPurchased = ScriptableObject.CreateInstance<Item>();
+        itemPurchased.SetItem(npc.ItemsForSale[itemSelected]);
+        inventory.Buy(itemPurchased);
 
         shopUI.SetBuyButton(inventory.Money >= npc.ItemsForSale[itemSelected].Price);
 
@@ -60,9 +61,9 @@ public class ShopManager : MonoBehaviour
 
     internal void SellItem()
     {
-        inventory.Money += inventory.ItemsList[itemSelected].Price;
+        Item itemSold = inventory.ItemsList[itemSelected];
 
-        inventory.ItemsList.Remove(inventory.ItemsList[itemSelected]);
+        inventory.Sell(itemSold);
 
         shopUI.SetSellButton(false);
         DestroyImmediate(buttonSelected);
@@ -72,7 +73,6 @@ public class ShopManager : MonoBehaviour
     public void OpenShop()
     {
         SetupShop();
-        
     }
 
     internal void CloseShop()

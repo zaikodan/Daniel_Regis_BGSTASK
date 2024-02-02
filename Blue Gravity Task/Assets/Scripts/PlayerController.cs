@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     Vector2 direction;
     Rigidbody2D rb;
     Animator animator;
+    Inventory inventory;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        inventory = GetComponent<Inventory>();
     }
 
     private void Update()
@@ -33,6 +35,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Interact") == 1f)
         {
             Interact();
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            inventory.OpenInventory();
         }
     }
 

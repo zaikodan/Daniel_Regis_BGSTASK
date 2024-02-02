@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\ShopManager.cs" />
     <Compile Include="Assets\Scripts\NPC.cs" />
+    <Compile Include="Assets\Scripts\PlayerRender.cs" />
+    <Compile Include="Assets\Scripts\InventoryUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
