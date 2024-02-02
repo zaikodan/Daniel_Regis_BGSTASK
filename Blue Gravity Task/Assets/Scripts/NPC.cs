@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] GameObject interactBallon;
+    [SerializeField] GameObject interactBalloon;
+    [SerializeField] ShopManager shop;
+    [SerializeField] Item[] itemsForSale;
+
+    public Item[] ItemsForSale { get => itemsForSale; }
 
     public void Interact()
     {
+        
+        shop.gameObject.SetActive(true);
+        shop.Npc = this;
+        shop.SetupShop();
         Debug.Log("Shop Open");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && interactBallon != null)
+        if (collision.CompareTag("Player") && interactBalloon != null)
         {
-            interactBallon.SetActive(true);
+            interactBalloon.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && interactBallon != null)
+        if (collision.CompareTag("Player") && interactBalloon != null)
         {
-            interactBallon.SetActive(false);
+            interactBalloon.SetActive(false);
         }
     }
 }
