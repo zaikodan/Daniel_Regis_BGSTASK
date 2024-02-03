@@ -26,6 +26,7 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         shopUI.SetupStoreToSell(inventory);
+        shopUI.UpdateMoney(inventory.Money);
     }
 
     private void SetupShop()
@@ -58,6 +59,7 @@ public class ShopManager : MonoBehaviour
         itemPurchased.SetItem(itemSelected);
         inventory.Buy(itemPurchased);
 
+        shopUI.UpdateMoney(inventory.Money);
         shopUI.SetBuyButton(inventory.Money >= itemPurchased.Price);
 
         shopUI.AddItemToSell(itemPurchased);
@@ -67,6 +69,7 @@ public class ShopManager : MonoBehaviour
     {
         inventory.Sell(itemSelected);
 
+        shopUI.UpdateMoney(inventory.Money);
         shopUI.SetSellButton(false);
         Destroy(buttonSelected);
     }

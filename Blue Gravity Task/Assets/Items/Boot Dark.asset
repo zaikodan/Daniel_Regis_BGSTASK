@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boot Dark
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dd5b5bdb078e6c5498f0c4c621eb3877, type: 3}
   itemType: 2
   sprites:
   - {fileID: 21300000, guid: 0038d4b0669b99846b9be93321f9d7a4, type: 3}

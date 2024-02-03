@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hood Blue
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: a912aad44317fd94bbb7459100ed5fb4, type: 3}
   itemType: 0
   sprites:
   - {fileID: 21300000, guid: 41375989850254546b76c3a6813e6d19, type: 3}

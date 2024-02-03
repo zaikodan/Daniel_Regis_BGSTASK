@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boot Brown
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ae57f058fbea4034b8ffceb49b57ba1c, type: 3}
   itemType: 2
   sprites:
   - {fileID: 21300000, guid: 40e550cd3b539f14eb98d42b6769b592, type: 3}

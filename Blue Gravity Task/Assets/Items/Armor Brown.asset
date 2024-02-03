@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Armor Brown
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 7529ec46a9aa5a6419f57a6ec83ef5ea, type: 3}
   itemType: 1
   sprites:
   - {fileID: 21300000, guid: ece48dca5e286fd48b5dc0633b08b15d, type: 3}

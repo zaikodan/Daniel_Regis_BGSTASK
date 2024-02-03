@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     GameObject ButtonPrefab;
     [SerializeField]
-    Text itemName, itemDescription, itemCost;
+    Text itemName, itemDescription, itemCost, playerMoney;
     [SerializeField]
     Image itemIcon;
     [SerializeField]
@@ -31,6 +31,11 @@ public class InventoryUI : MonoBehaviour
         
     }
 
+    internal void UpdateMoney(int value)
+    {
+        playerMoney.text = "Money: " + value;
+    }
+
     internal void SetWindow(bool active)
     {
         inventoryWindow.SetActive(active);
@@ -43,6 +48,7 @@ public class InventoryUI : MonoBehaviour
         buttonInstantiated.transform.SetParent(content.transform, false);
         buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => inventory.SelectItem(item));
         buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => UpdateInformations(item));
+        buttonInstantiated.transform.GetChild(0).GetComponent<Image>().sprite = item.ItemIcon;
     }
 
     internal void RemoveButton(int index)
@@ -55,7 +61,7 @@ public class InventoryUI : MonoBehaviour
         itemName.text = string.Empty;
         itemDescription.text = string.Empty;
         itemCost.text = string.Empty;
-        itemIcon.sprite = null;
+        itemIcon.enabled = false;
         equipButton.interactable = false;
     }
 
@@ -65,6 +71,7 @@ public class InventoryUI : MonoBehaviour
         itemDescription.text = item.ItemDescription;
         itemCost.text = item.Price.ToString();
         itemIcon.sprite = item.ItemIcon;
+        itemIcon.enabled = true;
         equipButton.interactable = item.Equipable;
 
         Text equipButtonText = equipButton.GetComponentInChildren<Text>();

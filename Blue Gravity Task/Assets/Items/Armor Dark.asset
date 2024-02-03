@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Armor Dark
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 54891d32cd64d714eb8e0c59b12b2cdd, type: 3}
   itemType: 1
   sprites:
   - {fileID: 21300000, guid: ab59709aadb3a224294b3c3b5c47cc79, type: 3}

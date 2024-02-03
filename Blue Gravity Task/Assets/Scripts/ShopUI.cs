@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] Button buyButton, sellButton, npcButton, inventoryButton, exitButton;
-    [SerializeField] GameObject buyWindow, sellWindow, shopWindow, buyContent, sellContent, previewLegsParent, previewTopParent, previewHeadParent;
+    [SerializeField] GameObject buyWindow, sellWindow, shopWindow, buyContent, sellContent;
     [SerializeField] GameObject shopButtonPrefab;
-    [SerializeField] Text itemName, itemDescription, itemCost;
+    [SerializeField] Text itemName, itemDescription, itemCost, playerMoney;
+    [SerializeField] Image itemIcon;
 
     ShopManager shopManager;
 
@@ -43,8 +46,7 @@ public class ShopUI : MonoBehaviour
 
             int index = i;
 
-            currentButton.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItemToBuy(index));
-            currentButton.GetComponentInChildren<Text>().text = npc.ItemsForSale[i].ItemName;
+            SetupButton(currentButton.GetComponent<Button>(), () => shopManager.SelectItemToBuy(index), npc.ItemsForSale[i].ItemIcon);
         }
     }
 
@@ -60,8 +62,14 @@ public class ShopUI : MonoBehaviour
     {
         GameObject buttonInstantiated = Instantiate(shopButtonPrefab);
         buttonInstantiated.transform.SetParent(sellContent.transform, false);
-        buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItemToSell(item, buttonInstantiated));
-        buttonInstantiated.GetComponentInChildren<Text>().text = item.ItemName;
+
+        SetupButton(buttonInstantiated.GetComponent<Button>(), () => shopManager.SelectItemToSell(item, buttonInstantiated), item.ItemIcon);
+    }
+
+    private void SetupButton(Button targetButton, UnityAction call, Sprite icon)
+    {
+        targetButton.onClick.AddListener(call);
+        targetButton.transform.GetChild(0).GetComponent<Image>().sprite = icon;
     }
 
     private void InitializeButtons()
@@ -87,67 +95,25 @@ public class ShopUI : MonoBehaviour
 
     internal void ResetPreview()
     {
-        previewHeadParent.SetActive(false);
-        previewTopParent.SetActive(false);
-        previewLegsParent.SetActive(false);
-
         itemName.text = string.Empty;
         itemDescription.text = string.Empty;
         itemCost.text = string.Empty;
+        itemIcon.enabled = false;
     }
 
     internal void SetPreview(Item item)
     {
-        previewHeadParent.SetActive(false);
-        previewTopParent.SetActive(false);
-        previewLegsParent.SetActive(false);
-
         itemName.text = item.ItemName;
         itemDescription.text = item.ItemDescription;
         itemCost.text = "Cost: " + item.Price;
+        itemIcon.sprite = item.ItemIcon;
+        itemIcon.enabled = true;
 
-        switch (item.ItemType)
-        {
-            case Item.TypesOfItems.Head:
+    }
 
-                Image[] previewHead = previewHeadParent.GetComponentsInChildren<Image>();
-
-                for (int i = 0; i < item.Sprites.Length; i++)
-                {
-                    previewHead[i].sprite = item.Sprites[i];
-                }
-
-                previewHeadParent.SetActive(true);
-
-                break;
-            case Item.TypesOfItems.Torso:
-
-                Image[] previewTop = previewTopParent.GetComponentsInChildren<Image>();
-
-                for (int i = 0; i < item.Sprites.Length; i++)
-                {
-                    previewTop[i].sprite = item.Sprites[i];
-                }
-
-                previewTopParent.SetActive(true);
-
-
-                break;
-            case Item.TypesOfItems.Legs:
-
-                Image[] previewLegs = previewLegsParent.GetComponentsInChildren<Image>();
-
-                for (int i = 0; i < item.Sprites.Length; i++)
-                {
-                    previewLegs[i].sprite = item.Sprites[i];
-                }
-
-                previewLegsParent.SetActive(true);
-
-                break;
-        }
-
-       
+    internal void UpdateMoney(int value)
+    {
+        playerMoney.text = "Money: " + value;
     }
 
     internal void SetBuyButton(bool active)

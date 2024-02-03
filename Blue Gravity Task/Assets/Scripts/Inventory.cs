@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
         inventoryUI = FindObjectOfType<InventoryUI>();
 
         EquipInitials();
+        inventoryUI.UpdateMoney(money);
     }
 
     private void EquipInitials()
@@ -120,12 +121,14 @@ public class Inventory : MonoBehaviour
     {
         money -= itemPurchased.Price;
         AddItem(itemPurchased);
+        inventoryUI.UpdateMoney(money);
     }
 
     public void Sell(Item itemSold)
     {
         money += itemSold.Price;
         RemoveItem(itemSold);
+        inventoryUI.UpdateMoney(money);
     }
 
     public void OpenInventory()

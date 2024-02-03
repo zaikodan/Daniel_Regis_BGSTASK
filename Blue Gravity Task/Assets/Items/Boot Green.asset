@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boot Green
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c0edee2f04672f049b0d58fd9b84ea57, type: 3}
   itemType: 2
   sprites:
   - {fileID: 21300000, guid: 925993f8892fa474c904d0e9a8f67cee, type: 3}
