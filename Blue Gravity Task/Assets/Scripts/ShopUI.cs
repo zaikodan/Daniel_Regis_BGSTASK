@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,46 +20,48 @@ public class ShopUI : MonoBehaviour
         InitializeButtons();
     }
 
-    internal void GenerateButtons()
+    internal void SetupStoreToBuy(NPC npc)
     {
-        if (buyContent.transform.childCount == 0)
+        int greaterLength = Mathf.Max(npc.ItemsForSale.Length, buyContent.transform.childCount);
+        for (int i = 0; i < greaterLength; i++)
         {
-            for (int i = 0; i < shopManager.Npc.ItemsForSale.Length; i++)
+            GameObject currentButton;
+            if (i >= npc.ItemsForSale.Length)
             {
-                int index = i;
-                GameObject buttonInstantiated = Instantiate(shopButtonPrefab);
-                buttonInstantiated.transform.SetParent(buyContent.transform, false);
-                buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItem(index, buttonInstantiated));
-                buttonInstantiated.GetComponentInChildren<Text>().text = shopManager.Npc.ItemsForSale[i].ItemName;
+                Destroy(buyContent.transform.GetChild(i).gameObject);
+                continue;
             }
+            else if(i >= buyContent.transform.childCount)
+            {
+                currentButton = Instantiate(shopButtonPrefab);
+                currentButton.transform.SetParent(buyContent.transform, false);
+            }
+            else
+            {
+                currentButton = buyContent.transform.GetChild(i).gameObject;
+            }
+
+            int index = i;
+
+            currentButton.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItemToBuy(index));
+            currentButton.GetComponentInChildren<Text>().text = npc.ItemsForSale[i].ItemName;
         }
-
-        int amount = sellContent.transform.childCount;
-
-            while (sellContent.transform.childCount < shopManager.Inventory.ItemsList.Count)
-            {
-                int index = amount;
-                GameObject buttonInstantiated = Instantiate(shopButtonPrefab);
-                buttonInstantiated.transform.SetParent(sellContent.transform, false);
-                buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItem(index, buttonInstantiated));
-                buttonInstantiated.GetComponentInChildren<Text>().text = shopManager.Inventory.ItemsList[amount].ItemName;
-            amount++;
-            }
-        
     }
 
-    internal void UpdateButtons()
+    internal void SetupStoreToSell(Inventory inventory)
     {
-        for(int i = 0;i<sellContent.transform.childCount;i++)
+        foreach(Item item in inventory.ItemsList)
         {
-            Button button = sellContent.transform.GetChild(i).GetComponent<Button>();
-            int index = i;
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => shopManager.SelectItem(index, button.gameObject));
-            button.GetComponentInChildren<Text>().text = shopManager.Inventory.ItemsList[i].ItemName;
+            AddItemToSell(item);
         }
-                
-        
+    }
+
+    internal void AddItemToSell(Item item)
+    {
+        GameObject buttonInstantiated = Instantiate(shopButtonPrefab);
+        buttonInstantiated.transform.SetParent(sellContent.transform, false);
+        buttonInstantiated.GetComponent<Button>().onClick.AddListener(() => shopManager.SelectItemToSell(item, buttonInstantiated));
+        buttonInstantiated.GetComponentInChildren<Text>().text = item.ItemName;
     }
 
     private void InitializeButtons()
@@ -71,7 +74,7 @@ public class ShopUI : MonoBehaviour
         exitButton.onClick.AddListener(shopManager.CloseShop);
     }
 
-    private void SwitchWindows(bool buying)
+    internal void SwitchWindows(bool buying)
     {
         shopManager.buying = buying;
         buyWindow.SetActive(buying);
@@ -79,10 +82,10 @@ public class ShopUI : MonoBehaviour
 
         SetBuyButton(false);
         SetSellButton(false);
-        SetPreview();
+        ResetPreview();
     }
 
-    internal void SetPreview()
+    internal void ResetPreview()
     {
         previewHeadParent.SetActive(false);
         previewTopParent.SetActive(false);

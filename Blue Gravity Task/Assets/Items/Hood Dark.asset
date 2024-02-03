@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a27d325f85033a4e9df01e2f5efb216, type: 3}
-  m_Name: Head 1
+  m_Name: Hood Dark
   m_EditorClassIdentifier: 
-  itemName: Head 1
+  itemName: Hood Dark
   itemDescription: 
   itemIcon: {fileID: 0}
   itemType: 0
   sprites:
-  - {fileID: 21300000, guid: 518ab34707033904cb1d99dbfcc9f4bb, type: 3}
-  - {fileID: 21300000, guid: 468244f274f38f64b85773c7888444b6, type: 3}
+  - {fileID: 21300000, guid: 7db7af78e8f9c45418a407bdd7958560, type: 3}
+  - {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
   equiped: 0
   equipable: 1
-  price: 0
+  price: 10

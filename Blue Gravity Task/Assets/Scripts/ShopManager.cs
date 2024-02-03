@@ -10,12 +10,11 @@ public class ShopManager : MonoBehaviour
     PlayerController playerController;
     ShopUI shopUI;
 
-    int itemSelected;
+    Item itemSelected;
     GameObject buttonSelected;
     internal bool buying;
 
     public NPC Npc { get => npc; set => npc = value; }
-    public Inventory Inventory { get => inventory; }
 
     private void Awake()
     {
@@ -24,50 +23,52 @@ public class ShopManager : MonoBehaviour
         shopUI = GetComponent<ShopUI>();
     }
 
-    public void SetupShop()
+    private void Start()
     {
+        shopUI.SetupStoreToSell(inventory);
+    }
+
+    private void SetupShop()
+    {
+        shopUI.SetupStoreToBuy(npc);
         buying = true;
-        shopUI.GenerateButtons();
-        shopUI.SetPreview();
+        shopUI.ResetPreview();
+        shopUI.SwitchWindows(buying);
         shopUI.SetShopWindow(buying);
     }
 
-    internal void SelectItem(int itemIndex, GameObject buttonClicked)
+    internal void SelectItemToBuy(int itemIndex)
     {
-        itemSelected = itemIndex;
+        itemSelected = (npc.ItemsForSale[itemIndex]);
+        shopUI.SetPreview(itemSelected);
+        shopUI.SetBuyButton(inventory.Money >= itemSelected.Price);
+    }
+    internal void SelectItemToSell(Item itemSelect, GameObject buttonClicked)
+    {
+        itemSelected = itemSelect;
         buttonSelected = buttonClicked;
 
-        if (buying)
-        {
-            shopUI.SetPreview(npc.ItemsForSale[itemSelected]);
-            shopUI.SetBuyButton(inventory.Money >= npc.ItemsForSale[itemSelected].Price);
-        }
-        else
-        {
-            shopUI.SetSellButton(true);
-        }
+        shopUI.SetSellButton(!itemSelect.Equiped);
+        
     }
 
     internal void BuyItem()
     {
         Item itemPurchased = ScriptableObject.CreateInstance<Item>();
-        itemPurchased.SetItem(npc.ItemsForSale[itemSelected]);
+        itemPurchased.SetItem(itemSelected);
         inventory.Buy(itemPurchased);
 
-        shopUI.SetBuyButton(inventory.Money >= npc.ItemsForSale[itemSelected].Price);
+        shopUI.SetBuyButton(inventory.Money >= itemPurchased.Price);
 
-        shopUI.GenerateButtons();
+        shopUI.AddItemToSell(itemPurchased);
     }
 
     internal void SellItem()
     {
-        Item itemSold = inventory.ItemsList[itemSelected];
-
-        inventory.Sell(itemSold);
+        inventory.Sell(itemSelected);
 
         shopUI.SetSellButton(false);
-        DestroyImmediate(buttonSelected);
-        shopUI.UpdateButtons();
+        Destroy(buttonSelected);
     }
 
     public void OpenShop()
