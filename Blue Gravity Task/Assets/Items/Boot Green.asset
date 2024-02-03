@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: Boot Green
   m_EditorClassIdentifier: 
   itemName: Boot Green
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: c0edee2f04672f049b0d58fd9b84ea57, type: 3}
-  itemType: 2
   sprites:
   - {fileID: 21300000, guid: 925993f8892fa474c904d0e9a8f67cee, type: 3}
   - {fileID: 21300000, guid: 6fa8902135d83ff49a376c05761b61d4, type: 3}
   - {fileID: 21300000, guid: 321cb2880c53eb743987a6a94741e4f0, type: 3}
   - {fileID: 21300000, guid: ed569bcf23ebe674180d6ae7a5d29495, type: 3}
   - {fileID: 21300000, guid: 27fe921d9d4bdb24eb91cc1e96a04f02, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 2
   price: 10
+  equipable: 1

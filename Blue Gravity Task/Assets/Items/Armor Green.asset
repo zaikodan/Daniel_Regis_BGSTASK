@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Armor Green
   m_EditorClassIdentifier: 
   itemName: Armor Green
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: d594919f74953094ca441e30b692510a, type: 3}
-  itemType: 1
   sprites:
   - {fileID: 21300000, guid: e1cf0148d2f367e42966b7ce6ee32e73, type: 3}
   - {fileID: 21300000, guid: 574bf96e23209b64eb8fa4c82d71564c, type: 3}
@@ -24,6 +23,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3a94b1e5121a110479590d1d60ce75f0, type: 3}
   - {fileID: 21300000, guid: 342c30774664cc34088bfe173b77c96e, type: 3}
   - {fileID: 21300000, guid: 57e9977661e6a7246b75c2de487e5bb3, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 1
   price: 10
+  equipable: 1

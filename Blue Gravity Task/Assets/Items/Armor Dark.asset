@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Armor Dark
   m_EditorClassIdentifier: 
   itemName: Armor Dark
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 54891d32cd64d714eb8e0c59b12b2cdd, type: 3}
-  itemType: 1
   sprites:
   - {fileID: 21300000, guid: ab59709aadb3a224294b3c3b5c47cc79, type: 3}
   - {fileID: 21300000, guid: bbec2f9af2fefd4459cd1f041e6850cf, type: 3}
@@ -24,6 +23,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fa66f03a93fcebb418b876e0f4731600, type: 3}
   - {fileID: 21300000, guid: 767ae73862a0c7c418959a63daafaae9, type: 3}
   - {fileID: 21300000, guid: e4c8d3fb89489fc4684fb809362e237c, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 1
   price: 10
+  equipable: 1

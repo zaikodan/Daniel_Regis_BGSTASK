@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: Boot Dark
   m_EditorClassIdentifier: 
   itemName: Boot Dark
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: dd5b5bdb078e6c5498f0c4c621eb3877, type: 3}
-  itemType: 2
   sprites:
   - {fileID: 21300000, guid: 0038d4b0669b99846b9be93321f9d7a4, type: 3}
   - {fileID: 21300000, guid: add7b98e4870e9d4c8e1dd5e07e3de1c, type: 3}
   - {fileID: 21300000, guid: e374a8e2ee1ae6b4c938a59399b39ffb, type: 3}
   - {fileID: 21300000, guid: a366da325a505654e94ff671e63cde89, type: 3}
   - {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 2
   price: 10
+  equipable: 1

@@ -56,15 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\IInteractable.cs" />
-    <Compile Include="Assets\Scripts\ShopUI.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\Scripts\ShopManager.cs" />
-    <Compile Include="Assets\Scripts\NPC.cs" />
-    <Compile Include="Assets\Scripts\PlayerRender.cs" />
-    <Compile Include="Assets\Scripts\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopUI.cs" />
+    <Compile Include="Assets\Scripts\Characters\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Item.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
+    <Compile Include="Assets\Scripts\Characters\Player\PlayerRender.cs" />
+    <Compile Include="Assets\Scripts\Characters\NPC.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

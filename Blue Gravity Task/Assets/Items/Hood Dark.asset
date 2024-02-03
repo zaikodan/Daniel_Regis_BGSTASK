@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Hood Dark
   m_EditorClassIdentifier: 
   itemName: Hood Dark
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 40857edf67ec454489aaa174f14b78f6, type: 3}
-  itemType: 0
   sprites:
   - {fileID: 21300000, guid: 7db7af78e8f9c45418a407bdd7958560, type: 3}
   - {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 0
   price: 10
+  equipable: 1

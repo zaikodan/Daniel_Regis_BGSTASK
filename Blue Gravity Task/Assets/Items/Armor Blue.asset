@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Armor Blue
   m_EditorClassIdentifier: 
   itemName: Armor Blue
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 9b369c3398deef44d91f6f7df8c32e97, type: 3}
-  itemType: 1
   sprites:
   - {fileID: 21300000, guid: c100ecf6707adf24083cea1e4063c659, type: 3}
   - {fileID: 21300000, guid: 30716b7cc770c7b46beff26e032f9ca7, type: 3}
@@ -24,6 +23,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5e7415947ce8b1c47ade9a3d811da6cd, type: 3}
   - {fileID: 21300000, guid: 44fa20638679f684891b3b8f8ae65078, type: 3}
   - {fileID: 21300000, guid: 805906b1206aa944b99385aa2c600d2f, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 1
   price: 10
+  equipable: 1

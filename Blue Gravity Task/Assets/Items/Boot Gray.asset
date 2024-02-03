@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: Boot Gray
   m_EditorClassIdentifier: 
   itemName: Boot Gray
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 2782e34872ca5ed4d99679b27bee8fd7, type: 3}
-  itemType: 2
   sprites:
   - {fileID: 21300000, guid: 40e550cd3b539f14eb98d42b6769b592, type: 3}
   - {fileID: 21300000, guid: 7b9383d96cedcd9409cc1f3d6d355cf6, type: 3}
   - {fileID: 21300000, guid: 7b78357522a34d64bb8775b962b0deb0, type: 3}
   - {fileID: 21300000, guid: 6ebc4c8acffeeca41934c2f2393a45be, type: 3}
   - {fileID: 21300000, guid: 4807dc8cba98f89409729f6aac2945a7, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 2
   price: 10
+  equipable: 1

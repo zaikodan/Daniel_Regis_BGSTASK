@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Hood Green
   m_EditorClassIdentifier: 
   itemName: Hood Green
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 41caa74c0b86b13489bef82c16051696, type: 3}
-  itemType: 0
   sprites:
   - {fileID: 21300000, guid: 8e016bdb4d00e70429de56b91135940c, type: 3}
   - {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 0
   price: 10
+  equipable: 1

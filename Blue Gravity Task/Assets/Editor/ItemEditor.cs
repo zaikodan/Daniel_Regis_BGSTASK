@@ -15,17 +15,17 @@ public class ItemEditor : Editor
 
         switch (item.ItemType)
         {
-            case Item.TypesOfItems.Head:
+            case Item.TypesOfItem.Hood:
 
                 EditorGUILayout.HelpBox(headInfoText, MessageType.Info);
                 break;
 
-            case Item.TypesOfItems.Torso:
+            case Item.TypesOfItem.Armor:
 
                 EditorGUILayout.HelpBox(torsoInfoText, MessageType.Info);
                 break;
 
-            case Item.TypesOfItems.Legs:
+            case Item.TypesOfItem.Boots:
 
                 EditorGUILayout.HelpBox(legInfoText, MessageType.Info);
                 break;

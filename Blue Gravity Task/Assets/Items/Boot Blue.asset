@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: Boot Blue
   m_EditorClassIdentifier: 
   itemName: Boot Blue
-  itemDescription: 
+  itemDescription: A description about the item
   itemIcon: {fileID: 21300000, guid: 1e98123f7288e0c419a3b2d361702241, type: 3}
-  itemType: 2
   sprites:
   - {fileID: 21300000, guid: 5cb065829e2f3084cb4dd46e0f41fb30, type: 3}
   - {fileID: 21300000, guid: 2932647fff9189e40a62a25143f3f534, type: 3}
   - {fileID: 21300000, guid: 3cf87d879b214174ea666233f56d905e, type: 3}
   - {fileID: 21300000, guid: d4a68b40fbf8e4046a2350c31a210fb1, type: 3}
   - {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
-  equiped: 0
-  equipable: 1
+  itemType: 2
   price: 10
+  equipable: 1
